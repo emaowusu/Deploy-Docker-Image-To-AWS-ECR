@@ -5,9 +5,9 @@ on:
     branches: [ "main" ]
 
 env:
-    ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-    ECR_REPOSITORY: secret-gen-repo
-    IMAGE_TAG: latest
+  ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+  ECR_REPOSITORY: secret-gen-repo
+  IMAGE_TAG: latest
 
 jobs:
   deploy:
