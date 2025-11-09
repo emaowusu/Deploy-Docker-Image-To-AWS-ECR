@@ -46,8 +46,16 @@ jobs:
       # Create ECS cluster if missing
       - name: Create ECS cluster if missing
         run: |
-          aws ecs describe-clusters --clusters $ECS_CLUSTER >/dev/null 2>&1 || \
-          aws ecs create-cluster --cluster-name $ECS_CLUSTER
+          CLUSTER_STATUS=$(aws ecs describe-clusters --clusters $ECS_CLUSTER --query "clusters[0].status" --output text || echo "MISSING")
+          if [ "$CLUSTER_STATUS" = "MISSING" ]; then
+            echo "Cluster $ECS_CLUSTER does not exist. Creating..."
+            aws ecs create-cluster --cluster-name $ECS_CLUSTER
+            echo "Waiting 10 seconds for cluster to become available..."
+            sleep 10
+          else
+            echo "Cluster $ECS_CLUSTER already exists."
+          fi
+
 
       # Build Docker image
       - name: Build Docker image
