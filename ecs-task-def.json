@@ -1,0 +1,31 @@
+{
+  "family": "secret-gen",
+  "containerDefinitions": [
+    {
+      "name": "secret-gen-container",
+      "image": "${ecr_image_url}",
+      "essential": true,
+      "cpu": 256,
+      "memory": 512,
+      "portMappings": [
+        {
+          "containerPort": ${container_port},
+          "hostPort": ${container_port},
+          "protocol": "tcp"
+        }
+      ],
+      "logConfiguration": {
+        "logDriver": "awslogs",
+        "options": {
+          "awslogs-group": "/ecs/secret-gen",
+          "awslogs-region": "${region}",
+          "awslogs-stream-prefix": "ecs"
+        }
+      }
+    }
+  ],
+  "requiresCompatibilities": ["FARGATE"],
+  "networkMode": "awsvpc",
+  "cpu": "256",
+  "memory": "512"
+}
