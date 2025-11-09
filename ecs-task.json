@@ -1,5 +1,5 @@
 {
-  "family": "name-gen-task",
+  "family": "secret-gen-task",
   "networkMode": "awsvpc",
   "requiresCompatibilities": ["FARGATE"],
   "cpu": "256",
@@ -8,10 +8,10 @@
   "containerDefinitions": [
     {
       "name": "name-gen-container",
-      "image": "819312869829.dkr.ecr.us-east-1.amazonaws.com/name-gen-repo:latest",
+      "image": "819312869829.dkr.ecr.us-east-1.amazonaws.com/secret-gen-repo:latest",
       "portMappings": [
         {
-          "containerPort": 300,
+          "containerPort": 3000,
           "protocol": "tcp"
         }
       ],
