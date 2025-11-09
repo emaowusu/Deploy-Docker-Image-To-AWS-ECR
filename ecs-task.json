@@ -1,0 +1,21 @@
+{
+  "family": "name-gen-task",
+  "networkMode": "awsvpc",
+  "requiresCompatibilities": ["FARGATE"],
+  "cpu": "256",
+  "memory": "512",
+  "executionRoleArn": "arn:aws:iam::819312869829:role/ecsTaskExecutionRole",
+  "containerDefinitions": [
+    {
+      "name": "name-gen-container",
+      "image": "819312869829.dkr.ecr.us-east-1.amazonaws.com/name-gen-repo:latest",
+      "portMappings": [
+        {
+          "containerPort": 300,
+          "protocol": "tcp"
+        }
+      ],
+      "essential": true
+    }
+  ]
+}
