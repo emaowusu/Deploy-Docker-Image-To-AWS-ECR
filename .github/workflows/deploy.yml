@@ -62,9 +62,9 @@ jobs:
       - name: Scan Docker image with Trivy
         uses: aquasecurity/trivy-action@0.28.0
         with:
-          image-ref: ${{ steps.login-ecr.outputs.registry }}/{{ env.ECR_REPOSITORY }}:${{ env.IMAGE_TAG }}
+          image-ref: ${{ steps.login-ecr.outputs.registry }}/${{ env.ECR_REPOSITORY }}:${{ env.IMAGE_TAG }}
           format: table
-          exit-code: 1  # Fails the workflow if vulnerabilities found
+          exit-code: 1   # fail if vulnerabilities found
           severity: CRITICAL,HIGH
 
       # Push Docker image to ECR
