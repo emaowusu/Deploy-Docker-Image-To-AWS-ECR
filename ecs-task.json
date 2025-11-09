@@ -7,7 +7,7 @@
   "executionRoleArn": "arn:aws:iam::819312869829:role/ecsTaskExecutionRole",
   "containerDefinitions": [
     {
-      "name": "name-gen-container",
+      "name": "secret-gen-container",
       "image": "819312869829.dkr.ecr.us-east-1.amazonaws.com/secret-gen-repo:latest",
       "portMappings": [
         {
