@@ -10,7 +10,6 @@
       "portMappings": [
         {
           "containerPort": ${container_port},
-          "hostPort": ${container_port},
           "protocol": "tcp"
         }
       ],
