@@ -123,7 +123,7 @@ Once complete, Terraform will output:
 
 ```
 alb_dns_name = name-gen-alb-xxxxxxx.us-east-1.elb.amazonaws.com
-ecr_repository_url = 819312869829.dkr.ecr.us-east-1.amazonaws.com/name-gen-repo
+ecr_repository_url = $ACCOUNT_ID.dkr.ecr.us-east-1.amazonaws.com/name-gen-repo
 ```
 
 ---
@@ -134,19 +134,19 @@ ecr_repository_url = 819312869829.dkr.ecr.us-east-1.amazonaws.com/name-gen-repo
 
    ```bash
    aws ecr get-login-password --region us-east-1 \
-   | docker login --username AWS --password-stdin 819312869829.dkr.ecr.us-east-1.amazonaws.com
+   | docker login --username AWS --password-stdin $ACCOUNT_ID.dkr.ecr.us-east-1.amazonaws.com
    ```
 
 2. Tag your image:
 
    ```bash
-   docker tag name-gen:latest 819312869829.dkr.ecr.us-east-1.amazonaws.com/name-gen-repo:latest
+   docker tag name-gen:latest $ACCOUNT_ID.dkr.ecr.us-east-1.amazonaws.com/name-gen-repo:latest
    ```
 
 3. Push the image:
 
    ```bash
-   docker push 819312869829.dkr.ecr.us-east-1.amazonaws.com/name-gen-repo:latest
+   docker push $ACCOUNT_ID.dkr.ecr.us-east-1.amazonaws.com/name-gen-repo:latest
    ```
 
 ---
@@ -242,18 +242,7 @@ This will remove the ALB, ECS cluster, ECR, and IAM roles.
 | **Container Port** | 300               |
 | **Public Access**  | via ALB (port 80) |
 
----
-
-### ✅ After following these steps, your app will be:
-
-* Built as a Docker image
-* Pushed to Amazon ECR
-* Deployed to ECS Fargate
-* Accessible from the internet via AWS Application Load Balancer
 
 ---
 
-**Author:** *Your Name*
-**AWS Account:** `819312869829`
-**Region:** `us-east-1`
-
+**Author:** *EMMANUEL OWUSU-ADDAI*
