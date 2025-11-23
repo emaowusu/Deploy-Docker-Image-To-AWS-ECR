@@ -48,15 +48,17 @@ http://(your-alb-dns-name)
 
 ---
 
-
 ```
-Automate-Deployment-of-Docker-Image-To-AWS-ECR
+Deploy-Docker-Image-To-AWS-ECR
 ├─ deploy_to_ecr.sh
 ├─ Dockerfile
+├─ ecs-task-def.json
 ├─ ecs-task.json
 ├─ index.js
-├─ main.tf
-├─ outputs.tf
+├─ infra
+│  ├─ main.tf
+│  ├─ outputs.tf
+│  └─ variables.tf
 ├─ package-lock.json
 ├─ package.json
 ├─ public
@@ -65,11 +67,11 @@ Automate-Deployment-of-Docker-Image-To-AWS-ECR
 │  └─ styles
 │     └─ main.css
 ├─ Readme.md
-├─ variables.tf
 └─ views
    └─ index.ejs
 
 ```
+
 
 ## ⚙️ Step 1: Build and Test Locally
 
@@ -162,7 +164,7 @@ Whenever you push to the **`main`** branch:
    * Update the ECS Task Definition
    * Deploy the new version to your ECS Fargate service
 
-Your workflow file: `.github/workflows/deploy.yml`
+Workflow file: `.github/workflows/deploy.yml`
 
 ---
 
@@ -181,7 +183,7 @@ Your workflow file: `.github/workflows/deploy.yml`
    http://name-gen-alb-123456789.us-east-1.elb.amazonaws.com
    ```
 
-🎉 Your app should now be running live on ECS Fargate!
+🎉 The app should now be running live on ECS Fargate!
 
 ---
 
@@ -246,3 +248,4 @@ This will remove the ALB, ECS cluster, ECR, and IAM roles.
 ---
 
 **Author:** *EMMANUEL OWUSU-ADDAI*
+
